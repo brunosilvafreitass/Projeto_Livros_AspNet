@@ -1,0 +1,59 @@
+﻿@model Livros.Models.EditorasModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Editora Model</h4>
+    <hr />
+    <div class="col-md-6">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdEditora" />
+        <div class="form-group">
+            <label asp-for="NomeEditora" class="control-label">Nome Editora</label>
+            <input asp-for="NomeEditora" class="form-control" disabled />
+            <span asp-validation-for="NomeEditora" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LocalizacaoEditora" class="control-label">Localização Editora</label>
+            <input asp-for="LocalizacaoEditora" class="form-control" disabled />
+            <span asp-validation-for="LocalizacaoEditora" class="text-danger"></span>
+        </div>
+        <br>
+
+        <div class="d-grid gap-2">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmationDelete">Deletar</button>
+
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+
+</div>
+
+@* Model *@
+<div class="modal fade" id="modalConfirmationDelete" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">Apagar Editora</h5>
+                @*                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button> *@
+            </div>
+            <div class="modal-body">
+                <p>Excluir Editora @Model.NomeEditora.ToUpper()?</p>
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="IdEditora" />
+                    <input type="submit" value="Deletar" class="btn btn-warning" /> |
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

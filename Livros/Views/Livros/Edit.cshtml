@@ -1,0 +1,39 @@
+﻿@model Livros.Models.LivrosModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LivrosModel</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdLivro" />
+            <div class="form-group">
+                <label asp-for="TituloLivro" class="control-label">Titulo</label>
+                <input asp-for="TituloLivro" class="form-control" />
+                <span asp-validation-for="TituloLivro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnoPublicacaoLivro" class="control-label">Data Publicação</label>
+                <input asp-for="AnoPublicacaoLivro" class="form-control" />
+                <span asp-validation-for="AnoPublicacaoLivro" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Livros.Models.EditorasModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br/>
+
+@if (TempData["erro"] != null)
+{
+    <div class="alert alert-danger" style="position: relative;">
+        <button type="button" class="custom-close-button" data-dismiss="alert" aria-label="Fechar">
+            &times;
+        </button>
+        @TempData["erro"]
+    </div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        <button type="button" class="custom-close-button" data-dismiss="alert" aria-label="Fechar">
+            &times;
+        </button>
+        @TempData["Message"]
+    </div>
+}
+
+<h1 class="text-center">Lista de Editoras</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Criar Novo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.NomeEditora) *@
+                Editora
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.LocalizacaoEditora) *@
+                Localização
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <strong>
+                    @Html.DisplayFor(modelItem => item.IdEditora)
+                </strong>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeEditora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocalizacaoEditora)
+            </td>
+            <td>
+                <a type="button" class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@item.IdEditora">Edit</a> |
+                <a type="button" class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.IdEditora">Details</a> |
+                <a type="button" class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.IdEditora">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

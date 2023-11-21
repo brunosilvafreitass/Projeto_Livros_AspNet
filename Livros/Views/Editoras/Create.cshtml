@@ -1,0 +1,37 @@
+﻿@model Livros.Models.EditorasModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Criar</h1>
+
+<h4>Editoras Model</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeEditora" class="control-label">Nome Editora</label>
+                <input asp-for="NomeEditora" class="form-control" />
+                <span asp-validation-for="NomeEditora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocalizacaoEditora" class="control-label">Localizacao Editora</label>
+                <input asp-for="LocalizacaoEditora" class="form-control" />
+                <span asp-validation-for="LocalizacaoEditora" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

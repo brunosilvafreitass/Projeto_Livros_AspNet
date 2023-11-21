@@ -1,0 +1,63 @@
+﻿@model Livros.Models.LivrosModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>LivrosModel</h4>
+    <hr />
+    <div class="col-md-6">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdLivro" />
+        <div class="form-group">
+            <label asp-for="TituloLivro" class="control-label">Titulo</label>
+            <input asp-for="TituloLivro" class="form-control" disabled />
+            <span asp-validation-for="TituloLivro" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AnoPublicacaoLivro" class="control-label">Data Publicação</label>
+            <input asp-for="AnoPublicacaoLivro" class="form-control" disabled />
+            <span asp-validation-for="AnoPublicacaoLivro" class="text-danger"></span>
+        </div>
+        <br>
+    
+        <div class="d-grid gap-2">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmationDelete">Deletar</button>
+
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+    
+</div>
+
+@* Model *@
+<div class="modal fade" id="modalConfirmationDelete" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">Apagar Livro</h5>
+@*                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> *@
+            </div>
+            <div class="modal-body">
+                <p>Excluir Livro @Model.TituloLivro.ToUpper()?</p>
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="IdLivro" />
+                    <input type="submit" value="Deletar" class="btn btn-warning" /> |
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

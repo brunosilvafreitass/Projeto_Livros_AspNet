@@ -1,0 +1,33 @@
+﻿@model Livros.Models.EditorasModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes</h1>
+
+    <h4>Editoras Model</h4>
+    <hr />
+
+<div class="row">
+    <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEditora" />
+            <div class="form-group">
+                <label asp-for="NomeEditora" class="control-label">Nome Editora</label>
+                <input asp-for="NomeEditora" class="form-control" disabled/>
+                <span asp-validation-for="NomeEditora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocalizacaoEditora" class="control-label">Localizacao Editora</label>
+                <input asp-for="LocalizacaoEditora" class="form-control" disabled/>
+                <span asp-validation-for="LocalizacaoEditora" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="d-grid gap-2">
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.IdEditora">Editar</a>
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+
+    </div>
+</div>
